@@ -5,6 +5,8 @@ import Home from './components/Home';
 import SearchFilms from './components/SearchFilms';
 
 
+
+
 function App() {
   return (
       <Router>

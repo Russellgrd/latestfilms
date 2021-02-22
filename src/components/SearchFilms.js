@@ -1,44 +1,52 @@
-import { useState, useEffect } from 'react';
-import useFetch from '../customHooks/useFetch';
-
-
-
+import { useState } from 'react';
+import MovieBoxPanel from './MovieBoxPanel';
 
 const SearchFilms = () => {
-    const queryString = 'https://api.themoviedb.org/3/search/movie?api_key=';
-    const apiKey = 'd62fc006c3906e85bfd56ccb79e6e0f1';
-    const [filmName, setFilmName] = useState('');
-    const [filmResults, setFilmResults] = useState(null);
-    const poster_path = 'https://image.tmdb.org/t/p/w500';
     
+    let [ filmName,setFilmName ] = useState(null); 
+    let [ filmArrayList, setFilmArrayList ] = useState(null);
+    const posterPath = 'https://image.tmdb.org/t/p/w500';
 
-    const handleFilmSearch = async (e) => {
+    let handleFilmSearchClick = (e) => {
         e.preventDefault();
-        console.log(filmName);
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=1&query=${filmName}`)
-            .then((data) => data.json())
-            .then((res) => {
-                setFilmResults(res.results);
-                console.log(res.results);
-            });
-    };
+        fetch(`${process.env.REACT_APP_THEMOVIEDB_URL}${process.env.REACT_APP_THEMOVIEDB_API_KEY}&language=en-US&query=${filmName}&page=1`)
+            .then((data) => {
+                return data.json()
+            })
+            .then((filmListResults) => {
+                setFilmArrayList(filmListResults.results);
+                console.log(filmArrayList)
+            })
+    }
+
+    let handleFilmSearchName = (e) =>{
+        setFilmName(e.target.value);
+    }
+
+    const handleTrailerButton = (movieId) => {
+        fetch(`http://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.REACT_APP_THEMOVIEDB_API_KEY}`)
+            .then(res => res.json())
+            .then((data) => {
+                console.log(data);
+                data.results.forEach((filmObj) => {
+                    if(filmObj.type === 'Trailer') {
+                        window.open(`https://www.youtube.com/watch?v=${filmObj.key}`,'_blank');
+                    }
+                })
+            }) 
+    };  
 
     return ( 
         <div className="searchFilmsMain">
-            <h2>Search Films</h2>
-            <form onSubmit={(e) => {handleFilmSearch(e)}} className="searchFilmsMain-formBox">
-                <label className="searchFilmsMain-formBox__label">Search Films</label>
-                <input onChange={(e) => {setFilmName(e.target.value)}}  type="text"/>
-                <button className="searchFilmsMain-formBox__button">Search</button>
+            <h2>search films component</h2>
+            <form>
+                <label>Enter Film Name</label>
+                <input onChange={(e) => {handleFilmSearchName(e)}} type="text"/>
+                <button onClick={(e) => {handleFilmSearchClick(e)}}>Search...</button>
             </form>
-                {filmResults && <div className="searchFilmsMain-resultsBox">
-                    {filmResults.map((filmItem) => (
-                        <div className="searchFilmsMain-resultsBox--item">
-                            <h2>{filmItem.title}</h2>
-                            <p>{filmItem.overview}</p>
-                            <img src={poster_path+filmItem.poster_path} alt=""/>
-                        </div>))}    
-                </div>}
+            { filmArrayList && filmArrayList.map((item) => (
+                <MovieBoxPanel mov={item} key={item.id} posterPath={posterPath} handleTrailerButton={handleTrailerButton}/>
+            ))}
         </div>
      );
 }

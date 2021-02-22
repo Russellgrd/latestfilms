@@ -1,13 +1,14 @@
 import { useHistory } from 'react-router-dom';
+import MovieBoxPanel from './MovieBoxPanel';
 
-const MovieList = ({movies,apiKey}) => {
+const MovieList = ({movies}) => {
 
     let history = useHistory();
     const posterPath = 'https://image.tmdb.org/t/p/w500';
     let youTubePath = "'window.open(`https://www.youtube.com/watch?v=${trailerObject.key}`,'_blank');'";
 
     const handleTrailerButton = (movieId) => {
-        fetch(`http://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`)
+        fetch(`http://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.REACT_APP_THEMOVIEDB_API_KEY}`)
             .then(res => res.json())
             .then((data) => {
                 console.log(data);
@@ -22,13 +23,7 @@ const MovieList = ({movies,apiKey}) => {
     return ( 
         <div className="movieListMain">
                 {movies.results.map((mov) => (
-                <div className="movieListMain-filmBox" key={mov.id}>
-                    <h2 className="movieListmain-filmBox-filmTitle">{mov.title}</h2>
-                    <p className="movieListMain-filmBox-filmOverview">{mov.overview}</p>
-                    <img className="movieListMain-filmBox-img" src={`${posterPath}${mov.poster_path}`} alt="filmPoster"/>
-                    <button className="movieListMain-filmBox-btn" onClick={() => {handleTrailerButton(mov.id)}}>Watch Trailer</button>
-                    {/* <a href={`http://api.themoviedb.org/3/movie/${mov.id}/videos?api_key=${apiKey}`}>Watch Trailer</a> */}
-                </div>
+                    <MovieBoxPanel mov={mov} handleTrailerButton={handleTrailerButton} posterPath={posterPath} youTubePath={youTubePath} />
                 ))}
         </div>
      );
