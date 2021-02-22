@@ -9,6 +9,7 @@ const useFetch = (url) => {
             .then((res) => res.json())
             .then((data) => {
             setData(data);
+            console.log(data);
             })
             .catch((err) => {
                 console.log('couldnt connect - this is an error in Russells machine')

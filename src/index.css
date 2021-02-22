@@ -64,6 +64,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 100ch;
+  font-size: 120%;
+  margin: auto;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.movieListMain-filmBox h2 {
+  color: #33dbff;
+  letter-spacing: 3px;
 }
 
 .movieListMain-filmBox-img{
