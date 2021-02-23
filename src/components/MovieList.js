@@ -10,7 +10,7 @@ const MovieList = ({movies}) => {
     return ( 
         <div className="movieListMain">
                 {movies.results.map((mov) => (
-                    <Link className="movieListMainLink" to={`/filmreview/${mov.id}`}><MovieBoxPanel mov={mov} posterPath={posterPath} youTubePath={youTubePath} key={mov.id} /></Link>
+                    <MovieBoxPanel mov={mov} posterPath={posterPath} youTubePath={youTubePath} key={mov.id} />
                 ))}
         </div>
      );

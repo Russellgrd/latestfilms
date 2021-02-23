@@ -8,8 +8,8 @@ const Home = () => {
 
     return (
         <div className="homeMain">
-            <h2>Welcome to the latest films</h2>
-            <p>we have the latest film releases, and all the latest exciting film trailers for you</p>
+            <h2 className="homeMain-Header">Welcome to the latest films</h2>
+            <h2 className="homeMain-slogan">We have the latest film releases, and all the latest exciting film trailers for you</h2>
             { movies && <MovieList movies={movies} apiKey={process.env.REACT_APP_THEMOVIEDB_API_KEY} />}
         </div>
       );

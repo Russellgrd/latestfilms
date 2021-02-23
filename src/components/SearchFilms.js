@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import MovieBoxPanel from './MovieBoxPanel';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const SearchFilms = () => {
     
+    let history = useHistory();
     let [ filmName,setFilmName ] = useState(null); 
     let [ filmArrayList, setFilmArrayList ] = useState(null);
     const posterPath = 'https://image.tmdb.org/t/p/w500';
@@ -22,20 +23,7 @@ const SearchFilms = () => {
 
     let handleFilmSearchName = (e) =>{
         setFilmName(e.target.value);
-    }
-
-    const handleTrailerButton = (movieId) => {
-        fetch(`http://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.REACT_APP_THEMOVIEDB_API_KEY}`)
-            .then(res => res.json())
-            .then((data) => {
-                console.log(data);
-                data.results.forEach((filmObj) => {
-                    if(filmObj.type === 'Trailer') {
-                        window.open(`https://www.youtube.com/watch?v=${filmObj.key}`,'_blank');
-                    }
-                })
-            }) 
-    };  
+    }  
 
     return ( 
         <div className="searchFilmsMain">
@@ -46,7 +34,7 @@ const SearchFilms = () => {
                 <button onClick={(e) => {handleFilmSearchClick(e)}}>Search...</button>
             </form>
             { filmArrayList && filmArrayList.map((item) => (
-                <Link to={`/filmreview/${item.id}`}><MovieBoxPanel mov={item} key={item.id} posterPath={posterPath} handleTrailerButton={handleTrailerButton}/></Link>
+                <Link to={`/filmreview/${item.id}`}><MovieBoxPanel mov={item} key={item.id} posterPath={posterPath} /></Link>
             ))}
         </div>
      );

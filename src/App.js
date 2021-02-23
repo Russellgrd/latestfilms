@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import SearchFilms from './components/SearchFilms';
 import FilmReviewTile from './components/FilmReviewTile';
+import About from './components/About';
 
 
 
@@ -26,6 +27,11 @@ function App() {
           <Switch>
             <Route path="/filmreview/:id">
               <FilmReviewTile />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/about">
+              <About />
             </Route>
           </Switch>
         </div>

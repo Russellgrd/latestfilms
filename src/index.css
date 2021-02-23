@@ -51,6 +51,11 @@ body {
   align-items: center;
 }
 
+.homeMain-slogan{
+  color: #f88;
+  size: 120%;
+}
+
 /*
   MovieList component styling
 */
@@ -151,4 +156,13 @@ body {
 }
 
 
+/*
+  About component
+*/
 
+.aboutMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

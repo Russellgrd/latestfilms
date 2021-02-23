@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 
 const FilmReviewTile = () => {
-
+    let history = useHistory();
     let [ filmReview, setFilmReview ] = useState(null)
     const { id } = useParams();
     console.log('this is the id' + id);
@@ -17,6 +17,10 @@ const FilmReviewTile = () => {
             })
     },[]) 
 
+    const handleBackButton = () => {
+        history.go(-1);
+    }
+
     return ( 
         <div className="filmReviewTile-main">
             <h2>Film Review </h2>
@@ -25,7 +29,7 @@ const FilmReviewTile = () => {
 
                     <h2>{filmReview[0] ? `Review Author: ${filmReview[0].author}` :  "This film has not yet been reviewed"}</h2>
                     <p>{filmReview[0]  ? filmReview[0].content : "This film has not yet been reviewed"}</p>
-
+                        <button onClick={handleBackButton}>Back</button>
                     {/* <h2>{filmReview[0].author || "This film has not yet been reviewed"}</h2>
                     <p>{filmReview[0].content || "This film has not yet been reviewed"}</p> */}
                 </div> }
