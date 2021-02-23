@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import MovieBoxPanel from './MovieBoxPanel';
+import { Link } from 'react-router-dom';
 
 const SearchFilms = () => {
     
@@ -38,14 +39,14 @@ const SearchFilms = () => {
 
     return ( 
         <div className="searchFilmsMain">
-            <h2>search films component</h2>
+            <h2>Search films</h2>
             <form>
                 <label>Enter Film Name</label>
                 <input onChange={(e) => {handleFilmSearchName(e)}} type="text"/>
                 <button onClick={(e) => {handleFilmSearchClick(e)}}>Search...</button>
             </form>
             { filmArrayList && filmArrayList.map((item) => (
-                <MovieBoxPanel mov={item} key={item.id} posterPath={posterPath} handleTrailerButton={handleTrailerButton}/>
+                <Link to={`/filmreview/${item.id}`}><MovieBoxPanel mov={item} key={item.id} posterPath={posterPath} handleTrailerButton={handleTrailerButton}/></Link>
             ))}
         </div>
      );

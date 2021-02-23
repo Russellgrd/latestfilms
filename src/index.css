@@ -60,6 +60,11 @@ body {
 
 }
 
+.movieListMainLink {
+  text-decoration: none;
+  color: black;
+}
+
 .movieListMain-filmBox{
   display: flex;
   flex-direction: column;
@@ -70,6 +75,8 @@ body {
   text-align: center;
   margin-top: 5px;
   margin-bottom: 5px;
+  color: black;
+
 }
 
 .movieListMain-filmBox h2 {
@@ -97,6 +104,10 @@ body {
   align-items: center;
   justify-content: center;
 }
+.searchFilmsMain a {
+  text-decoration: none;
+}
+
 
 .searchFilmsMain-resultsBox {
   display: flex;
@@ -118,6 +129,26 @@ body {
   margin-bottom: 5px;
 }
 
+
+/*
+  Film review tile
+*/
+
+.filmReviewTile-main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filmReviewTile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 120ch;
+  font-size: 120%;
+}
 
 
 
