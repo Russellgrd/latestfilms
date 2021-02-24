@@ -11,7 +11,7 @@ import About from './components/About';
 
 function App() {
   return (
-      <Router basename="process.env.PUBLIC_URL" >
+      <Router basename="/latestfilms" >
         <div className="App">
           <Navbar />
           <Switch>
