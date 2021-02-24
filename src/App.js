@@ -11,7 +11,7 @@ import About from './components/About';
 
 function App() {
   return (
-      <Router basename="/latestfilms" >
+      <Router>
         <div className="App">
           <Navbar />
           <Switch>
