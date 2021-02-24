@@ -60,43 +60,44 @@ body {
   MovieList component styling
 */
 .movieListMain{
-  display: flex;
-  flex-direction: column;
-
-}
-
-.movieListMainLink {
-  text-decoration: none;
-  color: black;
-}
+  margin: 0;
+} 
 
 .movieListMain-filmBox{
   display: flex;
   flex-direction: column;
+  border: .5px solid tomato;
   align-items: center;
-  max-width: 100ch;
-  font-size: 120%;
-  margin: auto;
+  max-width: 120ch;
+  min-height: 80vh;
   text-align: center;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  color: black;
-
+  justify-content: space-around;
+  margin: 2%;
 }
 
 .movieListMain-filmBox h2 {
   color: #33dbff;
   letter-spacing: 3px;
+  border-bottom: 2px solid #33dbff;
+  margin:0;
+
+}
+
+.movieListMain-filmBox-filmOverview {
+  margin:0;
 }
 
 .movieListMain-filmBox-img{
-  max-width: 100%;
+  max-width: 50%;
 }
 
 .movieListMain-filmBox-btn{
-  padding: 2px;
-  margin-top: 5px;
   color: royalblue;
+  padding: 2px;
+}
+
+.noTrailerDiv {
+  margin: 0;
 }
 
 /*

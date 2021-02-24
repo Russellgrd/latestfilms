@@ -30,15 +30,19 @@ const MovieBoxPanel = ({mov, posterPath}) => {
         })
     };
 
+    const handleMovieReview = (m,e) => {
+        e.preventDefault();
+        window.open(`/filmreview/${m.id}`,`_blank`);
+    }
 
     return (  
         <div className="movieListMain-filmBox" key={mov.id}>
             <h2 className="movieListmain-filmBox-filmTitle">{mov.title || mov.name}</h2>
             <p className="movieListMain-filmBox-filmOverview">{mov.overview}</p>
-            <img className="movieListMain-filmBox-img" src={`${posterPath}${mov.poster_path}`} alt="filmPoster"/>
+            {<img className="movieListMain-filmBox-img" src={`${posterPath}${mov.poster_path}`} alt="filmPoster"/>}
             <button className="movieListMain-filmBox-btn" onClick={(e) => {handleTrailerButton(mov.id,e)}}>Watch Trailer</button>
                 <p className="noTrailerDiv"></p>
-            <Link className="movieListMainLink" to={`/filmreview/${mov.id}`}>Movie Review</Link>
+            <button className="movieListMain-filmBox-btn" onClick={(e) => {handleMovieReview(mov,e)}}>Movie Review</button>
 
         </div>
     );
