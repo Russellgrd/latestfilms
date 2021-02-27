@@ -167,3 +167,22 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/*
+  public comments component
+*/
+
+.publicCommentsMain{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.publicCommentsMainBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: .5px solid#f88;
+  min-width: 50%;
+  margin-top: 5px;
+}

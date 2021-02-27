@@ -5,6 +5,7 @@ import Home from './components/Home';
 import SearchFilms from './components/SearchFilms';
 import FilmReviewTile from './components/FilmReviewTile';
 import About from './components/About';
+import PublicComents from './components/PublicComments';
 
 
 
@@ -27,6 +28,11 @@ function App() {
           <Switch>
             <Route path="/filmreview/:id">
               <FilmReviewTile />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/publiccomments">
+              <PublicComents />
             </Route>
           </Switch>
           <Switch>
