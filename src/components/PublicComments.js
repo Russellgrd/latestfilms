@@ -7,7 +7,7 @@ const PublicComents = () => {
     let [ fullCommentList, setCommentList ] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:4000')
+        fetch(' https://latestfilms.herokuapp.com/')
             .then(data => data.json())
             .then((res) => {
                 setCommentList(res);
@@ -20,7 +20,7 @@ const PublicComents = () => {
         let newCommentObject = {name:name,comment:comment};
         let jsonString = JSON.stringify(newCommentObject);
 
-        fetch('http://localhost:4000', {
+        fetch(' https://latestfilms.herokuapp.com/', {
             method: 'POST',
             body: jsonString,
             headers: {

@@ -8,7 +8,7 @@ const app = express();
 const mongoose = require('mongoose'); 
 const commentSchema = require('./models/commentSchema.js');
 
-mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true})
+mongoose.connect(`mongodb+srv://russell:9DLE9MmI4fVkNIS2@cluster0.fi7th.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,{useNewUrlParser: true})
 const db = mongoose.connection;
 db.on('error', error => console.error(error));
 db.once('open', () => {console.log('connected to mongoose')});

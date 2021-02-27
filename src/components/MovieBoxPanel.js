@@ -17,7 +17,6 @@ const MovieBoxPanel = ({mov, posterPath}) => {
                     if(el.type === 'Trailer') {
                         trailerArray.push(el.key);
                     }
-                
                 })   
             }
             if(trailerArray.length > 0) {
