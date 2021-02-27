@@ -8,7 +8,7 @@ const MovieBoxPanel = ({mov, posterPath}) => {
 
     const handleTrailerButton = (movieId,e) => {
         let trailerArray = [];
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.REACT_APP_THEMOVIEDB_API_KEY}&append_to_response=videos`)
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${"d62fc006c3906e85bfd56ccb79e6e0f1"}&append_to_response=videos`)
         .then(data => data.json())
         .then((res) => {
             console.log(res);

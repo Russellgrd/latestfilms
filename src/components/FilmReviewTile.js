@@ -8,7 +8,7 @@ const FilmReviewTile = () => {
     console.log('this is the id' + id);
   
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.REACT_APP_THEMOVIEDB_API_KEY}&language=en-US&page=1`)
+        fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key="d62fc006c3906e85bfd56ccb79e6e0f1"&language=en-US&page=1`)
             .then(data =>  data.json())
             .then((res) => {
                 setFilmReview(res.results);

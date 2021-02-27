@@ -8,8 +8,6 @@ import About from './components/About';
 import PublicComents from './components/PublicComments';
 
 
-
-
 function App() {
   return (
       <Router>
