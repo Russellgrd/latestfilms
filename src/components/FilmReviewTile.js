@@ -14,7 +14,7 @@ const FilmReviewTile = () => {
                 setFilmReview(res.results);
                 console.log(res.results);
             })
-    },[]) 
+    },[id]) 
 
     return ( 
         <div className="filmReviewTile-main">
