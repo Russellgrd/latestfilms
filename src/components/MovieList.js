@@ -8,7 +8,7 @@ const MovieList = ({movies}) => {
       
     return ( 
         <div className="movieListMain">
-                {movies.results.map((mov) => (
+                {movies && movies.results.map((mov) => (
                     <MovieBoxPanel mov={mov} posterPath={posterPath} youTubePath={youTubePath} key={mov.id} />
                 ))}
         </div>
