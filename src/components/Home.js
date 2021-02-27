@@ -4,7 +4,7 @@ import MovieList from './MovieList';
 const Home = () => {
 
     const queryString = 'https://api.themoviedb.org/3/trending/all/day?api_key=';
-    const { data:movies } = useFetch(queryString+d62fc006c3906e85bfd56ccb79e6e0f1);
+    const { data:movies } = useFetch(queryString+"d62fc006c3906e85bfd56ccb79e6e0f1");
 
     return (
         <div className="homeMain">
