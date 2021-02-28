@@ -19,7 +19,7 @@ const PublicComents = () => {
         let newCommentObject = {name:name,comment:comment};
         let jsonString = JSON.stringify(newCommentObject);
 
-        fetch(' https://latestfilms.herokuapp.com/', {
+        fetch('https://latestfilms.herokuapp.com/', {
             method: 'POST',
             body: jsonString,
             headers: {
