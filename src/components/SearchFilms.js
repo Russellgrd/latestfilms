@@ -11,7 +11,7 @@ const SearchFilms = () => {
 
     let handleFilmSearchClick = (e) => {
         e.preventDefault();
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key="d62fc006c3906e85bfd56ccb79e6e0f1"&language=en-US&query=${filmName}&page=1`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=d62fc006c3906e85bfd56ccb79e6e0f1&language=en-US&query=${filmName}&page=1`)
             .then((data) => {
                 return data.json()
             })
