@@ -1,17 +1,15 @@
-import {    useParams, Link, useHistory } from 'react-router-dom';
+import {    useParams } from 'react-router-dom';
 
 const MovieBoxPanel = ({mov, posterPath}) => {
 
     let { id } = useParams();
-    let history = useHistory();
     console.log(id);
 
     const handleTrailerButton = (movieId,e) => {
         let trailerArray = [];
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${"d62fc006c3906e85bfd56ccb79e6e0f1"}&append_to_response=videos`)
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key="d62fc006c3906e85bfd56ccb79e6e0f1"&append_to_response=videos`)
         .then(data => data.json())
         .then((res) => {
-            console.log(res);
             if(res.results.length > 0) {
                 res.results.map((el) => {
                     if(el.type === 'Trailer') {
@@ -23,7 +21,6 @@ const MovieBoxPanel = ({mov, posterPath}) => {
                 window.open(`https://www.youtube.com/watch?v=${trailerArray[0]}`); 
             } else if(trailerArray.length == 0) {
                 let currentButton = e.target;
-                console.log(currentButton);
                 currentButton.textContent = 'Sorry no trailer available';
             }
         })

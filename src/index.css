@@ -168,6 +168,11 @@ body {
   justify-content: center;
 }
 
+.aboutMain a {
+  text-decoration: none;
+  color: #33dbff;
+}
+
 /*
   public comments component
 */

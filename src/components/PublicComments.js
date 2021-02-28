@@ -11,7 +11,6 @@ const PublicComents = () => {
             .then(data => data.json())
             .then((res) => {
                 setCommentList(res);
-                console.log(res);
             })
         },[])
 
@@ -40,8 +39,6 @@ const PublicComents = () => {
     let handleNameChange = (e) => {
         setName(e.target.value);
     }
-
- 
 
     return ( 
         <div className="publicCommentsMain">

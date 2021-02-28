@@ -5,14 +5,12 @@ import { useEffect, useState } from 'react';
 const FilmReviewTile = () => {
     let [ filmReview, setFilmReview ] = useState(null)
     const { id } = useParams();
-    console.log('this is the id' + id);
   
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key="d62fc006c3906e85bfd56ccb79e6e0f1"&language=en-US&page=1`)
             .then(data =>  data.json())
             .then((res) => {
                 setFilmReview(res.results);
-                console.log(res.results);
             })
     },[id]) 
 
