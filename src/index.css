@@ -191,3 +191,11 @@ body {
   min-width: 50%;
   margin-top: 5px;
 }
+
+.isLoading {
+  color: #f88;
+}
+
+.formFeedback{
+  color: #f88;
+}

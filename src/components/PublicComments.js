@@ -5,6 +5,8 @@ const PublicComents = () => {
     let [ comment, setComment ] = useState(null);
     let [ name, setName ] = useState(null);
     let [ fullCommentList, setCommentList ] = useState(null);
+    let [ loading, setLoading ] = useState('');
+    let [ feedback, setFeedback ] = useState('');
 
     useEffect(() => {
         fetch(' https://latestfilms.herokuapp.com/')
@@ -16,20 +18,28 @@ const PublicComents = () => {
 
     let handleCommentSubmitButton = (e) => {
         e.preventDefault();
-        let newCommentObject = {name:name,comment:comment};
-        let jsonString = JSON.stringify(newCommentObject);
+        if(typeof name == 'string' && name.length > 3 && typeof comment == 'string' && comment.length > 10 ) {
+            let newCommentObject = {name:name,comment:comment};
+            let jsonString = JSON.stringify(newCommentObject);
+            setLoading('Adding comment.....')
 
-        fetch('https://latestfilms.herokuapp.com/', {
-            method: 'POST',
-            body: jsonString,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-            })
-            .then(res => res.json())
-            .then((data) => {
-                setCommentList(data);
-            });
+            fetch('https://latestfilms.herokuapp.com/', {
+                method: 'POST',
+                body: jsonString,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+                })
+                .then(res => res.json())
+                .then((data) => {
+                    setCommentList(data);
+                    setLoading('');
+                    setFeedback('');
+                });
+        } else {
+            setFeedback('Name should be more than 3 characters, and comment greater than 10 characters. These cannot be numbers');
+        }
+       
         }
 
     let handleCommentChange = (e) => {
@@ -49,6 +59,8 @@ const PublicComents = () => {
                 <label>Add a comment</label>
                 <input onChange={(e) => {handleCommentChange(e)}} type="text"/>
                 <button onClick={(e) => {handleCommentSubmitButton(e)}}>submit</button>
+                <p className="formFeedback">{feedback}</p>
+                <p className="isLoading">{loading}</p>
             </form>
             { fullCommentList && fullCommentList.map((el) => (
                 <div className="publicCommentsMainBox" key={el._id}>
