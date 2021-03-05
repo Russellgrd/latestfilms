@@ -35,16 +35,15 @@ comment1.save(function (err, comment) {
 
 });
 
-  const docs = await commentSchema.find({});
+  const docs = await commentSchema.find({}).sort({createdAt: -1});
   res.json(docs);
 })
 
 app.get('/',async (req, res) => {
-  const docs = await commentSchema.find({});
+  const docs = await commentSchema.find({}).sort({createdAt: -1});
   console.log('hit');
   res.json(docs);
 })
-
 
 
 
