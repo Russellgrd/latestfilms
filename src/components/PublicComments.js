@@ -66,7 +66,7 @@ const PublicComents = () => {
                 <div className="publicCommentsMainBox" key={el._id}>
                     <p className="publicCommentsMainBox-name">Name: {el.name}</p>
                     <p className="publicCommentsMainBox-comment">Comment: {el.comment}</p>
-                    <p className="publicCommentsMainBox-date">Comment date: {Date(`${el.createdAt}`)}</p>
+                    <p className="publicCommentsMainBox-date">Comment date: {el.createdAt}</p>
                 </div>
             ))}
         </div>
